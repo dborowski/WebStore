@@ -18,7 +18,7 @@ namespace WebStore.Web
 
         public void ListenToEvent<IOrderEvent>()
         {
-            _bus.get
+            
 
         }
     }
