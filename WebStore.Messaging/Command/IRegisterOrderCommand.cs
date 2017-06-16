@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace WebStore.Web.Messages
+namespace WebStore.Messaging.Command
 {
-    public interface IRegisterOrderCommand
+    public interface IRegisterOrderCommand : IOrderCommand
     {
         Guid CustomerId { get; }
         DateTime OrderDate { get; }

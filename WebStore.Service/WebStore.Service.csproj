@@ -67,12 +67,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consumer\ConfirmOrderCommandConsumer.cs" />
+    <Compile Include="Consumer\CompleteOrderCommandConsumer.cs" />
+    <Compile Include="Consumer\PayOrderCommandConsumer.cs" />
+    <Compile Include="Consumer\RegisterOrderCommandConsumer.cs" />
+    <Compile Include="Consumer\OrderBaseCommandConsumer.cs" />
+    <Compile Include="Event\OrderRegisteredEvent.cs" />
+    <Compile Include="Event\OrderPayedEvent.cs" />
+    <Compile Include="Event\OrderCompletedEvent.cs" />
+    <Compile Include="Event\OrderConfirmedEvent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebStore.Messaging\WebStore.Messaging.csproj">
+      <Project>{16cf3711-9087-4f44-b494-f4e5ec9ae6e6}</Project>
+      <Name>WebStore.Messaging</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

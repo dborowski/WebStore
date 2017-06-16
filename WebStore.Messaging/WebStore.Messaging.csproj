@@ -64,13 +64,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRegisterOrderCommand.cs" />
+    <Compile Include="Command\ICompleteOrderCommand.cs" />
+    <Compile Include="Command\IOrderCommand.cs" />
+    <Compile Include="Command\IPayOrderCommand.cs" />
+    <Compile Include="Command\IConfirmOrderCommand.cs" />
+    <Compile Include="Event\IOrderCompletedEvent.cs" />
+    <Compile Include="Event\IOrderEvent.cs" />
+    <Compile Include="Event\IOrderPayedEvent.cs" />
+    <Compile Include="Event\IOrderConfirmedEvent.cs" />
+    <Compile Include="Event\IOrderRegisteredEvent.cs" />
+    <Compile Include="Command\IRegisterOrderCommand.cs" />
     <Compile Include="MassTransitConfigurator.cs" />
+    <Compile Include="MassTransitConstant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

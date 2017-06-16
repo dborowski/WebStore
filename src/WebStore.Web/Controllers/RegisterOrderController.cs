@@ -10,24 +10,16 @@ namespace WebStore.Web.Controllers
     [Route("api/[controller]")]
     public class RegisterOrderController : Controller
     {
-        // GET api/values
-        [HttpGet]
-        public IEnumerable<OrderViewModel> Get()
+        private readonly MassTransitManager _massTransitManager;
+        public RegisterOrderController(MassTransitManager massTransitManager)
         {
-            return new OrderViewModel[] { };
+            _massTransitManager = massTransitManager;
         }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public OrderViewModel Get(Guid id)
-        {
-            return new OrderViewModel();
-        }
-
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]OrderViewModel value)
+        public void Post([FromBody]OrderViewModel model)
         {
+            _massTransitManager.RegisterOrder(new Messages.RegisterOrderCommand(model));
         }
     }
 }

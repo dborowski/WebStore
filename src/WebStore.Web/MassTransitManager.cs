@@ -1,5 +1,7 @@
 ﻿using MassTransit;
+using System;
 using WebStore.Messaging;
+using WebStore.Messaging.Command;
 using WebStore.Web.Messages;
 
 namespace WebStore.Web
@@ -11,15 +13,11 @@ namespace WebStore.Web
         {
             _bus = MassTransitConfigurator.Configure();
         }
-        public void RegisterOrder(RegisterOrderCommand registerOrderCommand)
+        public async void RegisterOrder(RegisterOrderCommand registerOrderCommand)
         {
-            _bus.Publish<IRegisterOrderCommand>(registerOrderCommand);
-        }
-
-        public void ListenToEvent<IOrderEvent>()
-        {
-            
-
+            var sendToUri = new Uri($"{MassTransitConstant.RabbitMqUri}" + $"{MassTransitConstant.OrderRegisteredQueue}");
+            var endPoint = await _bus.GetSendEndpoint(sendToUri);
+            await endPoint.Send<IRegisterOrderCommand>(registerOrderCommand);
         }
     }
 }
