@@ -1,5 +1,6 @@
 ﻿using MassTransit;
 using System;
+using System.Threading.Tasks;
 using WebStore.Messaging;
 using WebStore.Messaging.Command;
 using WebStore.Web.Messages;
@@ -13,7 +14,7 @@ namespace WebStore.Web
         {
             _bus = MassTransitConfigurator.Configure();
         }
-        public async void RegisterOrder(RegisterOrderCommand registerOrderCommand)
+        public async Task RegisterOrder(RegisterOrderCommand registerOrderCommand)
         {
             var sendToUri = new Uri($"{MassTransitConstant.RabbitMqUri}" + $"{MassTransitConstant.OrderRegisteredQueue}");
             var endPoint = await _bus.GetSendEndpoint(sendToUri);

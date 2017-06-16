@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.Web.Model;
+using System.Net;
 
 namespace WebStore.Web.Controllers
 {
@@ -17,9 +18,10 @@ namespace WebStore.Web.Controllers
         }
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]OrderViewModel model)
+        public async Task<HttpStatusCode> Post([FromBody]OrderViewModel model)
         {
-            _massTransitManager.RegisterOrder(new Messages.RegisterOrderCommand(model));
+            await _massTransitManager.RegisterOrder(new Messages.RegisterOrderCommand(model));
+            return HttpStatusCode.Accepted;
         }
     }
 }
