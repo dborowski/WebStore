@@ -1,27 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.Web.Model;
-using System.Net;
+using WebStore.Web.Messages;
 
 namespace WebStore.Web.Controllers
 {
     [Route("api/[controller]")]
-    public class RegisterOrderController : Controller
+    public class RegisterOrderController : BaseOrderController<OrderViewModel, RegisterOrderCommand>
     {
-        private readonly MassTransitManager _massTransitManager;
-        public RegisterOrderController(MassTransitManager massTransitManager)
-        {
-            _massTransitManager = massTransitManager;
-        }
-        // POST api/values
-        [HttpPost]
-        public async Task<HttpStatusCode> Post([FromBody]OrderViewModel model)
-        {
-            await _massTransitManager.RegisterOrder(new Messages.RegisterOrderCommand(model));
-            return HttpStatusCode.Accepted;
-        }
+        public RegisterOrderController(MassTransitManager massTransitManager) : base(massTransitManager)
+        { }
     }
 }

@@ -5,6 +5,5 @@ namespace WebStore.Messaging.Event
 {
     public interface IOrderCompletedEvent : IOrderEvent
     {
-        Guid Id { get; set; }
     }
 }

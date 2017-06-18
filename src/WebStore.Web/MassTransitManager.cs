@@ -1,5 +1,6 @@
 ﻿using MassTransit;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebStore.Messaging;
 using WebStore.Messaging.Command;
@@ -14,11 +15,19 @@ namespace WebStore.Web
         {
             _bus = MassTransitConfigurator.Configure();
         }
-        public async Task RegisterOrder(RegisterOrderCommand registerOrderCommand)
+
+        private Dictionary<Type, string> _commandQueueMap = new Dictionary<Type, string> {
+            {typeof(RegisterOrderCommand), MassTransitConstant.OrderRegisteredQueue},
+            {typeof(ConfirmOrderCommand), MassTransitConstant.OrderConfirmedQueue},
+            {typeof(PayOrderCommand), MassTransitConstant.OrderPayedQueue},
+            {typeof(CompleteOrderCommand), MassTransitConstant.OrderCompletedQueue}
+        };
+
+        public async Task ExecuteCommandOnOrder(IOrderCommand orderCommand)
         {
-            var sendToUri = new Uri($"{MassTransitConstant.RabbitMqUri}" + $"{MassTransitConstant.OrderRegisteredQueue}");
+            var sendToUri = new Uri($"{MassTransitConstant.RabbitMqUri}" + $"{MassTransitConstant.OrderSagaQueue}");
             var endPoint = await _bus.GetSendEndpoint(sendToUri);
-            await endPoint.Send<IRegisterOrderCommand>(registerOrderCommand);
+            await endPoint.Send(orderCommand, orderCommand.GetType());
         }
     }
 }

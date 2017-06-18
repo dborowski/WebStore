@@ -9,6 +9,7 @@
         public const string OrderConfirmedQueue = "orderconfirmed.service";
         public const string OrderPayedQueue = "orderpayed.service";
         public const string OrderCompletedQueue = "ordercompleted.service";
+        public const string OrderSagaQueue = "ordersaga.service";
 
         public const string OrderRegisteredNotificationQueue = "orderregistered.notification";
         public const string OrderConfirmedNotificationQueue = "orderconfirmed.notification";

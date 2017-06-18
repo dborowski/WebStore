@@ -1,8 +1,9 @@
-﻿using MassTransit;
-using MassTransit.RabbitMqTransport;
+﻿using Automatonymous;
+using MassTransit;
+using MassTransit.Saga;
 using System;
 using WebStore.Messaging;
-using WebStore.Service.Consumer;
+using WebStore.Service.Saga;
 
 namespace WebStore.Service
 {
@@ -10,7 +11,16 @@ namespace WebStore.Service
     {
         static void Main(string[] args)
         {
-            var bus = MassTransitConfigurator.Configure(ListenToEvents);
+            var saga = new OrderSaga();
+            var repo = new InMemorySagaRepository<OrderSagaState>();
+
+            var bus = MassTransitConfigurator.Configure((conf, host) =>
+            {
+                conf.ReceiveEndpoint(host, MassTransitConstant.OrderSagaQueue, cfg =>
+                {
+                    cfg.StateMachineSaga(saga, repo);
+                });
+            });
 
             bus.Start();
 
@@ -18,29 +28,6 @@ namespace WebStore.Service
             Console.ReadLine();
 
             bus.Stop();
-        }
-
-        static void ListenToEvents(IRabbitMqBusFactoryConfigurator configurator, IRabbitMqHost host)
-        {
-            configurator.ReceiveEndpoint(host, MassTransitConstant.OrderRegisteredQueue, cfg =>
-            {
-                cfg.Consumer<RegisterOrderCommandConsumer>();
-            });
-
-            configurator.ReceiveEndpoint(host, MassTransitConstant.OrderConfirmedQueue, cfg =>
-            {
-                cfg.Consumer<ConfirmOrderCommandConsumer>();
-            });
-
-            configurator.ReceiveEndpoint(host, MassTransitConstant.OrderPayedQueue, cfg =>
-            {
-                cfg.Consumer<PayOrderCommandConsumer>();
-            });
-
-            configurator.ReceiveEndpoint(host, MassTransitConstant.OrderCompletedQueue, cfg =>
-            {
-                cfg.Consumer<CompleteOrderCommandConsumer>();
-            });
         }
     }
 }
