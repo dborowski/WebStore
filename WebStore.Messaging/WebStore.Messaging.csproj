@@ -79,6 +79,7 @@
     <Compile Include="RabbitMq\IRegisterOrderCommand.cs" />
     <Compile Include="RabbitMq\OrderViewModel.cs" />
     <Compile Include="RabbitMq\ReggisterOrderCommand.cs" />
+    <Compile Include="RabbitMq\RegisterOrderReceiveCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

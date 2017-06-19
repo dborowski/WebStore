@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{855EF507-2C06-4459-B0AE-D6802E7FF9FE}"
+	ProjectSection(SolutionItems) = preProject
+		StartingInfo.txt = StartingInfo.txt
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A7D8EA66-FBA7-495E-BFD4-AEE9C12B9A15}"
 EndProject
@@ -14,8 +17,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Notification", "WebStore.Notification\WebStore.Notification.csproj", "{15814872-B482-4463-BC11-F24237640ADA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Messaging", "WebStore.Messaging\WebStore.Messaging.csproj", "{16CF3711-9087-4F44-B494-F4E5EC9AE6E6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Console", "WebStore.Console\WebStore.Console.csproj", "{BF689783-5095-4FBF-BBF8-6C8DFCD4D48A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.RabbitMq", "WebStore.RabbitMq\WebStore.RabbitMq.csproj", "{A03301F8-5149-4005-9355-32D15D37093C}"
 EndProject
@@ -41,10 +42,6 @@ Global
 		{16CF3711-9087-4F44-B494-F4E5EC9AE6E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16CF3711-9087-4F44-B494-F4E5EC9AE6E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16CF3711-9087-4F44-B494-F4E5EC9AE6E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF689783-5095-4FBF-BBF8-6C8DFCD4D48A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF689783-5095-4FBF-BBF8-6C8DFCD4D48A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF689783-5095-4FBF-BBF8-6C8DFCD4D48A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF689783-5095-4FBF-BBF8-6C8DFCD4D48A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A03301F8-5149-4005-9355-32D15D37093C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A03301F8-5149-4005-9355-32D15D37093C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A03301F8-5149-4005-9355-32D15D37093C}.Release|Any CPU.ActiveCfg = Release|Any CPU
