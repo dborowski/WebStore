@@ -10,6 +10,24 @@ namespace WebStore.Notification
     {
         static void Main(string[] args)
         {
+            //MassTransitService();
+            RabbitMqService();
+            Console.WriteLine();
+        }
+
+        private static void RabbitMqService()
+        {
+            Console.Title = "Notification service";
+            using (var rabbitMqManager = new RabbitMqManager())
+            {
+                rabbitMqManager.ListenForOrderRegisteredEvent();
+                Console.WriteLine("Listening for OrderRegisteredEvent..");
+                Console.ReadKey();
+            }
+        }
+
+        private static void MassTransitService()
+        {
             var bus = MassTransitConfigurator.Configure(ListenToEvents);
 
             bus.Start();

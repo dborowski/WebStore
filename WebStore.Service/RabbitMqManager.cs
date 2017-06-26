@@ -38,7 +38,7 @@ namespace WebStore.Service
                 consumer: consumer);
         }
 
-        public void SendOrderRegisteredEvent(IOrderRegisteredEvent command)
+        public void SendOrderRegisteredEvent(IRabbitMqOrderRegisteredEvent command)
         {
             channel.ExchangeDeclare(
                 exchange: RabbitMqConstants.OrderRegisteredExchange,

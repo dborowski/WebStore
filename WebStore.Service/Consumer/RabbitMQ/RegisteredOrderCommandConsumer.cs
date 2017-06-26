@@ -38,8 +38,7 @@ namespace WebStore.Service.Consumer.RabbitMQ
         private void Consume(IRegisterOrderCommand command)
         {
             //Store order registration and get Id
-            var id = 12;
-
+            var id = Guid.NewGuid();
             Console.WriteLine($"Order with id {id} registered");
             Console.WriteLine("Publishing order registered event");
 

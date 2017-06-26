@@ -72,6 +72,7 @@
     <Compile Include="Event\IOrderConfirmedEvent.cs" />
     <Compile Include="Event\IOrderRegisteredEvent.cs" />
     <Compile Include="Command\IRegisterOrderCommand.cs" />
+    <Compile Include="Event\IRabbitMqOrderRegisteredEvent.cs" />
     <Compile Include="MassTransitConfigurator.cs" />
     <Compile Include="MassTransitConstant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
