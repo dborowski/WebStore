@@ -11,8 +11,8 @@ namespace WebStore.Service
     {
         static void Main(string[] args)
         {
-            //OrderSageRun();
-            RabbitMqRun();
+            OrderSageRun();
+            //RabbitMqRun();
         }
 
         private static void RabbitMqRun()

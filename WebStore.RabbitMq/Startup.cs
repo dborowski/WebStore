@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using WebStore.RabbitMq.Hub;
 
 namespace WebStore.RabbitMq
 {
@@ -28,7 +25,9 @@ namespace WebStore.RabbitMq
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddTransient(typeof(MassTransitManager));
             services.AddMvc();
+            services.AddSignalR(x => x.Hubs.EnableDetailedErrors = true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,15 +45,17 @@ namespace WebStore.RabbitMq
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
             app.UseStaticFiles();
+
+            app.UseSignalR();
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=RegisterOrder}/{id?}");
+                    template: "{controller=RegisterOrder}/{action=RegisterOrder}/{id?}");
             });
+
         }
     }
 }

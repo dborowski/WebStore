@@ -10,8 +10,8 @@ namespace WebStore.Notification
     {
         static void Main(string[] args)
         {
-            //MassTransitService();
-            RabbitMqService();
+            MassTransitService();
+            //RabbitMqService();
             Console.WriteLine();
         }
 

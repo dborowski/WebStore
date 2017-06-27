@@ -5,9 +5,13 @@
     <RuntimeIdentifier>win7-x86</RuntimeIdentifier>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="GreenPipes" Version="1.0.10" />
+    <PackageReference Include="MassTransit" Version="3.5.7" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="3.5.7" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Server" Version="0.2.0-rtm-22752" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.2" />
@@ -21,6 +25,9 @@
     <ProjectReference Include="..\WebStore.Messaging\WebStore.Messaging.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Server">
+      <HintPath>..\packages\Microsoft.AspNetCore.SignalR.Server.0.2.0-rtm-22752\lib\net451\Microsoft.AspNetCore.SignalR.Server.dll</HintPath>
+    </Reference>
     <Reference Include="RabbitMQ.Client">
       <HintPath>..\packages\RabbitMQ.Client.4.1.3\lib\net451\RabbitMQ.Client.dll</HintPath>
     </Reference>

@@ -10,6 +10,11 @@ namespace WebStore.RabbitMq.Controllers
             return View();
         }
 
+        public IActionResult Stuff()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult RegisterOrder(OrderViewModel model)
         {
