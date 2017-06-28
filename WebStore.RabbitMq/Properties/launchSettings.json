@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:8569/",
+      "applicationUrl": "http://localhost:62913/",
       "sslPort": 0
     }
   },
@@ -16,6 +16,15 @@
       }
     },
     "WebStore.RabbitMq": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:62914"
+    }
+  }
+}
       "commandName": "Project"
     }
   }

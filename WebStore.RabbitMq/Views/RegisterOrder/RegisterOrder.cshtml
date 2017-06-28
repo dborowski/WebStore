@@ -1,0 +1,35 @@
+﻿@model WebStore.RabbitMq.Model.OrderViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div>
+    <h2>Order registration</h2>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h3>Pick up from</h3>
+        <div class="form-group">
+            <label asp-for="OrderDate"></label>
+            <input asp-for="OrderDate" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="ProductName"></label>
+            <input asp-for="ProductName" class="form-control" />
+        </div>
+    </div>
+</div>
+<input type="button" id="sendRequest" class="btn btn-info" value="Submit" />
+
+<script type="text/javascript">
+    $(function () {
+        //hub.start().done(function () {
+        //    $("#sendRequest").click(function () {
+        //        debugger;
+        //        var post = {
+        //            ProductName: $("#ProductName").val()
+        //        };
+        //        hub.server.registerOrder(post);
+        //    });
+        //});
+    })
+</script>
